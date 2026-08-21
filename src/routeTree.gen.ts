@@ -10,7 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FavoritesRouteImport } from './routes/favorites'
 import { Route as NewsRouteImport } from './routes/news'
+import { Route as SearchRouteImport } from './routes/search'
 import { Route as StandingsRouteImport } from './routes/standings'
 import { Route as MatchesIndexRouteImport } from './routes/matches.index'
 import { Route as MatchesMatchIdRouteImport } from './routes/matches.$matchId'
@@ -24,9 +26,19 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FavoritesRoute = FavoritesRouteImport.update({
+  id: '/favorites',
+  path: '/favorites',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NewsRoute = NewsRouteImport.update({
   id: '/news',
   path: '/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StandingsRoute = StandingsRouteImport.update({
@@ -67,7 +79,9 @@ const TeamsTeamIdRoute = TeamsTeamIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/favorites': typeof FavoritesRoute
   '/news': typeof NewsRoute
+  '/search': typeof SearchRoute
   '/standings': typeof StandingsRoute
   '/matches/$matchId': typeof MatchesMatchIdRoute
   '/players/$playerId': typeof PlayersPlayerIdRoute
@@ -78,7 +92,9 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/favorites': typeof FavoritesRoute
   '/news': typeof NewsRoute
+  '/search': typeof SearchRoute
   '/standings': typeof StandingsRoute
   '/matches/$matchId': typeof MatchesMatchIdRoute
   '/players/$playerId': typeof PlayersPlayerIdRoute
@@ -90,7 +106,9 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/favorites': typeof FavoritesRoute
   '/news': typeof NewsRoute
+  '/search': typeof SearchRoute
   '/standings': typeof StandingsRoute
   '/matches/$matchId': typeof MatchesMatchIdRoute
   '/players/$playerId': typeof PlayersPlayerIdRoute
@@ -103,7 +121,9 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/favorites'
     | '/news'
+    | '/search'
     | '/standings'
     | '/matches/$matchId'
     | '/players/$playerId'
@@ -114,7 +134,9 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/favorites'
     | '/news'
+    | '/search'
     | '/standings'
     | '/matches/$matchId'
     | '/players/$playerId'
@@ -125,7 +147,9 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/favorites'
     | '/news'
+    | '/search'
     | '/standings'
     | '/matches/$matchId'
     | '/players/$playerId'
@@ -137,7 +161,9 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FavoritesRoute: typeof FavoritesRoute
   NewsRoute: typeof NewsRoute
+  SearchRoute: typeof SearchRoute
   StandingsRoute: typeof StandingsRoute
   MatchesMatchIdRoute: typeof MatchesMatchIdRoute
   PlayersPlayerIdRoute: typeof PlayersPlayerIdRoute
@@ -156,11 +182,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/favorites': {
+      id: '/favorites'
+      path: '/favorites'
+      fullPath: '/favorites'
+      preLoaderRoute: typeof FavoritesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/news': {
       id: '/news'
       path: '/news'
       fullPath: '/news'
       preLoaderRoute: typeof NewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/standings': {
@@ -217,7 +257,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FavoritesRoute: FavoritesRoute,
   NewsRoute: NewsRoute,
+  SearchRoute: SearchRoute,
   StandingsRoute: StandingsRoute,
   MatchesMatchIdRoute: MatchesMatchIdRoute,
   PlayersPlayerIdRoute: PlayersPlayerIdRoute,
