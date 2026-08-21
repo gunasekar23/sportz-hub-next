@@ -32,7 +32,7 @@ function Home() {
   const secondary = news.filter((n) => !n.featured);
   const live = matches.filter((m) => m.status === "live");
   const upcoming = matches.filter((m) => m.status === "upcoming").slice(0, 3);
-  const spotlight = players[0];
+  const spotlight = players[0]!;
   const favoriteCandidates = teams.filter((t) => ["lal", "mci"].includes(t.id));
 
   return (
