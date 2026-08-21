@@ -11,6 +11,10 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { ThemeProvider } from "@/lib/theme";
+import { FavoritesProvider } from "@/lib/favorites";
+import { SiteHeader, MobileNav } from "@/components/site-header";
+import { LiveTicker } from "@/components/live-ticker";
 
 function NotFoundComponent() {
   return (
