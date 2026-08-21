@@ -59,7 +59,7 @@ function Home() {
         </section>
       </aside>
 
-      <div className="space-y-8 lg:col-span-6 lg:order-2">
+      <div className="order-first space-y-8 lg:order-2 lg:col-span-6">
         <Link to="/news" className="block animate-rise-in">
           <FeaturedNews item={featured} />
         </Link>
